@@ -17,4 +17,3 @@ COPY --from=builder /app/dist /app
 RUN chmod -R 755 /app
 
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
