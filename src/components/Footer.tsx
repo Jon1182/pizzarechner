@@ -6,13 +6,11 @@ import React from 'react';
  */
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-orange-100 mt-8 py-4">
-      <div className="max-w-4xl mx-auto px-4 flex items-center justify-between text-sm text-gray-700">
-        <span>© {new Date().getFullYear()} 8thsense</span>
+    <footer className="fixed bottom-0 left-0 w-full bg-base-100 border-t border-gray-100 dark:border-gray-800 z-40">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between text-sm text-muted">
+        <div>© {new Date().getFullYear()} 8thsense — Alle Rechte vorbehalten</div>
         <nav>
-          <a href="#impressum" className="text-orange-700 hover:underline">
-            Impressum
-          </a>
+          <a href="#impressum" className="link link-hover hover:text-primary">Impressum</a>
         </nav>
       </div>
     </footer>

@@ -1,3 +1,129 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Clean global polish for a professional look */
+:root {
+  --brand-primary: #FF7A18; /* vibrant orange */
+  --brand-primary-600: #e65d00;
+  --brand-secondary: #06b6d4; /* cyan */
+  --brand-accent: #7c3aed; /* purple */
+  --muted: #6b7280;
+  --transition-fast: 140ms;
+} 
+
+/* Small helper utilities for colorful accents */
+.hero-gradient {
+  background-image: linear-gradient(90deg, rgba(255,122,24,0.06), rgba(6,182,212,0.04), rgba(124,58,237,0.03));
+}
+.hero-title-gradient {
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary), var(--brand-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc; /* neutral background */
+  color: #0f172a; /* dark text */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Headline rhythm */
+h1 { line-height: 1.05; letter-spacing: -0.01em; }
+h2 { line-height: 1.15; }
+
+/* Focus outlines for keyboard users */
+:focus {
+  outline: 2px solid rgba(15,23,42,0.06);
+  outline-offset: 2px;
+}
+
+/* Subtle transitions and shadow rhythm */
+.btn, .input, .card {
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Button: darker brand variant used for primary CTA */
+.btn-primary-dark {
+  background-color: var(--brand-primary-600);
+  color: #ffffff;
+  border: 0;
+  box-shadow: 0 8px 20px rgba(230,93,0,0.12);
+}
+.btn-primary-dark:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+} 
+
+/* Helper: neutral card look for a professional feel (warmer orange variant) */
+.card-neutral {
+  /* warme, leicht orange Tönung, aber noch lesbar */
+  background-color: #fff6ed; /* sehr helles, warmes Orange */
+  border: 1px solid rgba(255,122,24,0.10); /* primär-orangener Rand */
+  box-shadow: 0 8px 24px rgba(255,122,24,0.06);
+  color: #0f172a;
+}
+
+/* When a stronger contrast is needed we provide a variant */
+.card-neutral.card-strong {
+  background-color: #ffefe0; /* etwas satter */
+  border-color: rgba(255,122,24,0.14);
+  box-shadow: 0 10px 28px rgba(255,122,24,0.08);
+}
+
+/* Remove default number input spinner (Chrome, Edge) and normalize appearance */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Utility: explicitly remove box-shadow when we want inputs to look flat */
+.input.shadow-none,
+.input.shadow-none:focus {
+  box-shadow: none !important;
+}
+
+/* Orange pizza patterned background (smaller, subtler) */
+.bg-pizza-orange {
+  /* Softer SVG colors & smaller motif to be less dominant */
+  --pizza-bg: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='48' height='48'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23fff2e6'/%3E%3Ccircle cx='12' cy='12' r='8' fill='%23ffd9b3'/%3E%3Ccircle cx='12' cy='12' r='3' fill='%23ffb28a' fill-opacity='0.85'/%3E%3Ccircle cx='7' cy='9' r='0.6' fill='%23ffffff' fill-opacity='0.9'/%3E%3Ccircle cx='16' cy='7' r='0.5' fill='%23ffffff' fill-opacity='0.9'/%3E%3Ccircle cx='14' cy='15' r='0.5' fill='%23f5e7db' fill-opacity='0.9'/%3E%3C/svg%3E";
+  background-color: color-mix(in srgb, var(--brand-primary) 85%, transparent);
+  background-image: url(var(--pizza-bg));
+  background-repeat: repeat;
+  background-size: 48px 48px;
+  background-position: 0 0;
+  background-attachment: local;
+}
+
+/* Variant for larger screens to keep pattern subtle but readable */
+@media (min-width: 768px) {
+  .bg-pizza-orange { background-size: 72px 72px; }
+}
+
+/* Slightly darker overlay utility when needed */
+.pizza-overlay {
+  background-image: linear-gradient(rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+}
+
+/* Utility: slightly darker orange text for headings */
+.text-brand-dark {
+  color: var(--brand-primary-600);
+} 
+
+
+
+

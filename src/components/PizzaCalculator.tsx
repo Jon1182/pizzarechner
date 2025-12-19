@@ -20,43 +20,49 @@ const PizzaCalculator: React.FC<PizzaCalculatorProps> = ({ onAddPizza }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md mb-8">
-      <div className="mb-4">
-        <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
-          Preis (€)
-        </label>
-        <input
-          type="number"
-          id="price"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-          step="0.01"
-          min="0"
-          required
-        />
+    <form onSubmit={handleSubmit} className="card card-neutral card-strong mb-6">
+      <div className="card-body p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-lg font-semibold text-brand-dark">Neue Pizza hinzufügen</h3>
+          <span className="text-sm text-muted">Schnell & präzise</span>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <label htmlFor="price" className="block text-sm font-medium mb-1">Preis (€)</label>
+            <input
+              type="number"
+              id="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              className="input input-bordered w-full shadow-none focus:shadow-none appearance-none"
+              step="0.01"
+              min="0"
+              placeholder="z.B. 12.50"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="diameter" className="block text-sm font-medium mb-1">Durchmesser (cm)</label>
+            <input
+              type="number"
+              id="diameter"
+              value={diameter}
+              onChange={(e) => setDiameter(e.target.value)}
+              className="input input-bordered w-full shadow-none focus:shadow-none appearance-none"
+              step="0.1"
+              min="0"
+              placeholder="z.B. 32"
+              required
+            />
+          </div>
+
+          <div className="card-actions mt-2">
+            <button type="submit" className="btn btn-primary-dark w-full border-0 shadow-md transition-transform duration-150">Pizza hinzufügen</button>
+          </div>
+        </div>
       </div>
-      <div className="mb-4">
-        <label htmlFor="diameter" className="block text-sm font-medium text-gray-700 mb-1">
-          Durchmesser (cm)
-        </label>
-        <input
-          type="number"
-          id="diameter"
-          value={diameter}
-          onChange={(e) => setDiameter(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-          step="0.1"
-          min="0"
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full bg-orange-600 text-white py-2 px-4 rounded-md hover:bg-orange-700 transition duration-300"
-      >
-        Pizza hinzufügen
-      </button>
     </form>
   );
 };

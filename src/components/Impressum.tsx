@@ -7,50 +7,48 @@ import React from 'react';
  */
 const Impressum: React.FC = () => {
   return (
-    <section className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md mt-6">
-      <h1 className="text-2xl font-semibold mb-4 text-orange-800">Impressum</h1>
+    <div className="max-w-4xl mx-auto mt-8">
+      <div className="card card-neutral">
+        <div className="card-body p-6">
+          <h1 className="text-2xl font-semibold mb-4 text-primary">Impressum</h1>
 
-      <address className="not-italic text-sm text-gray-700">
-        <p className="mb-2">
-          <strong>Firmenname / Betreiber:</strong> 8thsense
-        </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <div>
+                <h3 className="font-semibold">Unternehmen</h3>
+                <p className="text-sm text-gray-700">8thsense</p>
+                <p className="text-sm text-gray-700">Rechtsform: GmbH (Platzhalter)</p>
+              </div>
 
-        {/* <p className="mb-2">
-          <strong>Rechtsform:</strong> Gesellschaft mit beschränkter Haftung (GmbH) (Platzhalter)
-        </p> */}
+              <div>
+                <h3 className="font-semibold">Anschrift</h3>
+                <address className="not-italic text-sm text-gray-700">
+                  Nordfelder Reihe 4a<br />
+                  30159 Hannover<br />
+                  Deutschland
+                </address>
+              </div>
+            </div>
 
-        <p className="mb-2">
-          <strong>Anschrift:</strong>
-          <br />
-          Nordfelder Reihe 4a
-          <br />
-          30159 Hannover
-          <br />
-          Deutschland
-        </p>
+            <div className="space-y-3">
+              <div>
+                <h3 className="font-semibold">Kontakt</h3>
+                <p className="text-sm text-gray-700"><a href="mailto:info@example.com" className="link link-primary">info@8thsense.com</a></p>
+              </div>
 
-        <p className="mb-2">
-          <strong>Kontakt:</strong>
-          <br />
-          E-Mail: <a className="text-orange-600 underline" href="mailto:info@example.com">info@8thsense.com</a>
-        </p>
+              <div>
+                <h3 className="font-semibold">Verantwortlich</h3>
+                <p className="text-sm text-gray-700">Max Mustermann (Platzhalter)</p>
+              </div>
+            </div>
+          </div>
 
-        <p className="mb-2">
-          <strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong>
-          <br />
-          Max Mustermann (Platzhalter)
-        </p>
-
-        
-      </address>
-
-      {/* "Zurück"-Link: entfernt Hash, damit Nutzer wieder auf Hauptseite gelangen */}
-      <div className="mt-4 text-right">
-        <a href="#" className="text-sm text-orange-600 underline">
-          Zurück zur App
-        </a>
+          <div className="mt-6 text-right">
+            <a href="#" className="btn btn-ghost">Zurück zur App</a>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
