@@ -12,35 +12,46 @@ interface PizzaComparisonProps {
 
 const PizzaComparison: React.FC<PizzaComparisonProps> = ({ pizzas }) => {
   const sortedPizzas = [...pizzas].sort((a, b) => a.basePrice - b.basePrice);
+  const best = sortedPizzas.length > 0 ? sortedPizzas[0] : null;
+  const bestBasePrice = best ? best.basePrice : null;
 
   return (
-    <div className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4 text-orange-800">Pizza Vergleich</h2>
-      <table className="w-full">
-        <thead>
-          <tr className="bg-orange-100">
-            <th className="px-4 py-2 text-left">Preis (€)</th>
-            <th className="px-4 py-2 text-left">Durchmesser (cm)</th>
-            <th className="px-4 py-2 text-left">Grundpreis (€/cm²)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedPizzas.map((pizza, index) => (
-            <tr key={index} className={index % 2 === 0 ? 'bg-orange-50' : 'bg-white'}>
-              <td className="px-4 py-2">{pizza.price.toFixed(2)}</td>
-              <td className="px-4 py-2">{pizza.diameter.toFixed(1)}</td>
-              <td className="px-4 py-2">{pizza.basePrice.toFixed(4)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {sortedPizzas.length > 1 && (
-        <p className="mt-4 text-green-700 font-semibold">
-          Die günstigste Pizza kostet {sortedPizzas[0].basePrice.toFixed(4)} €/cm².
-        </p>
-      )}
+    <div className="card card-neutral card-strong">
+      <div className="card-body p-4">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-lg font-semibold text-brand-dark">Pizza Vergleich</h2>
+          {sortedPizzas.length > 0 && <span className="badge badge-outline text-sm">{sortedPizzas.length} Einträge</span>}
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="table table-compact table-zebra w-full">
+            <thead>
+              <tr>
+                <th className="text-left">Preis (€)</th>
+                <th className="text-left">Durchmesser (cm)</th>
+                <th className="text-right">Grundpreis (€/cm²)</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedPizzas.map((pizza, index) => (
+                <tr key={index} className={index === 0 ? 'bg-primary/6' : ''}>
+                  <td className="font-medium">{pizza.price.toFixed(2)} €</td>
+                  <td>{pizza.diameter.toFixed(1)} cm</td>
+                  <td className="text-right font-bold text-brand-dark">{pizza.basePrice.toFixed(4)}</td>
+                  <td>{index === 0 && <span className="badge badge-success badge-sm">Günstigste</span>}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {bestBasePrice !== null && sortedPizzas.length > 1 && (
+          <p className="mt-4 text-sm text-muted">Die günstigste Pizza kostet <strong className="text-brand-dark">{bestBasePrice.toFixed(4)}</strong> €/cm².</p>
+        )}
+      </div>
     </div>
   );
-};
+}
 
 export default PizzaComparison;
